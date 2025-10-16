@@ -1,200 +1,58 @@
-local map = vim.keymap.set
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
 
--- Neovim --
-map('n', '<Esc>', '<cmd>nohlsearch<CR>')
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-map('n', '<leader>so', ':source<CR>')
--- LSP --
-map('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
-map('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP Rename' })
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 
-local builtin = require('telescope.builtin')
-map('n', 'gd', builtin.lsp_definitions, { desc = "Goto definition" })
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
 
-map('n', 'gr', builtin.lsp_references, { desc = 'Goto references' })
-map('n', 'gI', builtin.lsp_implementations, { desc = 'Goto Implementation' })
--- what is a code action?
--- map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
-map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
---- Plugins ---
--- Oil --
-map('n', '-', ':Oil<CR>')
--- Tmux Nav --
-map('n', '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>')
-map('n', '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>')
-map('n', '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>')
-map('n', '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>')
-map('n', '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>')
+-- TIP: Disable arrow keys in normal mode
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Telescope --
-map('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
-map('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
-map('n', '<leader>sf', builtin.find_files, { desc = 'Search Files' })
-map('n', '<leader>st', builtin.builtin, { desc = 'Search Telescope' })
-map('n', '<leader>sw', builtin.grep_string, { desc = 'Search current Word' })
-map('n', '<leader>sg', builtin.live_grep, { desc = 'Search by Grep' })
-map('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
-map('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
-map('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
-map('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
 
--- map('n', '<leader>someDopeMapping', builtin.buffers, { desc = 'Search Files in Another Directory' })
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-map('n', '<leader>/', function()
-	builtin.current_buffer_fuzzy_find()
-end, { desc = '/ Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>xs', '<cmd>source ~/.config/nvim/snippets/snippets.lua<CR>', { desc = 'Source [S]nippets' })
+-- vim.keymap.set('n', '<leader>xv', ':source $HOME/.config/nvim/init.lua<CR>')
 
-map('n', '<leader>sn', function()
-	builtin.find_files {
-		cwd = vim.fn.stdpath 'config',
-		prompt_title = "Search Neovim Files",
-	}
-end, { desc = 'Search Neovim files' })
+-- make/build commands
+vim.keymap.set('n', '<leader>m', '<cmd>make<CR>', { desc = 'run :make !!!' })
+vim.keymap.set('n', '<leader>zbr', '<cmd>!zig build run<CR>', { desc = 'zig build run current project' })
 
--- Harpoon --
-local harpoon = require 'harpoon'
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
 
-vim.keymap.set('n', '<leader>ha', function()
-	harpoon:list():add()
-end, { desc = 'Add File to Harpoon' })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
-vim.keymap.set('n', '<leader>hr', function()
-	harpoon:list():remove()
-end, { desc = 'Remove File from Harpoon' })
---
-vim.keymap.set('n', '<leader>hl', function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = 'List Harpoon Files' })
-
-vim.keymap.set('n', '[h', function()
-	harpoon:list():prev { ui_nav_wrap = true }
-end, { desc = 'Previous Harpoon File' })
-
-vim.keymap.set('n', ']h', function()
-	harpoon:list():next { ui_nav_wrap = true }
-end, { desc = 'Next Harpoon File' })
-
-vim.keymap.set('n', '<leader>hc', function()
-	harpoon:list():clear()
-end, { desc = 'Clear Harpoon List' })
-
-for i = 1, 9 do
-	vim.keymap.set('n', string.format('<leader>h%s', i), function()
-		harpoon:list():select(i)
-	end, { desc = string.format('Jump to Harpoon File %s', i) })
-end
-
--- LuaSnip --
-local ls = require("luasnip")
-
-vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
-
--- Misc --
-vim.keymap.set('n', '<leader>lp', function()
-	local pickers = require('telescope.pickers')
-	local finders = require('telescope.finders')
-	local conf = require('telescope.config').values
-	local entry_display = require('telescope.pickers.entry_display')
-	local actions = require('telescope.actions')
-	local action_state = require('telescope.actions.state')
-
-	local plugins = vim.pack.get()
-
-	-- formatter for each entry (columns)
-	local displayer = entry_display.create({
-		separator = " ",
-		items = {
-			{ width = 30 },       -- plugin name
-			{ width = 10 },       -- status
-			{ width = 75 }, -- path
-		},
-	})
-
-	local function make_display(entry)
-		local hl = entry.active and "TelescopeResultsIdentifier"
-				or "TelescopeResultsComment"
-		return displayer({
-			{ entry.name,   "TelescopeResultsFunction" },
-			{ entry.status, hl },
-			{ entry.path,   "TelescopeResultsComment" },
-		})
-	end
-
-	local entries = {}
-	for _, p in ipairs(plugins) do
-		table.insert(entries, {
-			value = p,
-			name = p.spec.name or "Unknown",
-			status = p.active and "[Active]" or "[Inactive]",
-			path = p.spec.src,
-			active = p.active,
-			display = make_display,
-			ordinal = (p.spec.name or "") .. " " .. p.path,
-		})
-	end
-
-	pickers
-			.new({}, {
-				prompt_title = "Installed Plugins",
-				finder = finders.new_table {
-					results = entries,
-					entry_maker = function(entry) return entry end,
-				},
-				sorter = conf.generic_sorter({}),
-				attach_mappings = function(_, map)
-					map("i", "<esc>", actions.close)
-					map("n", "<esc>", actions.close)
-					map("i", "<CR>", function(prompt_bufnr)
-						local selection = action_state.get_selected_entry()
-						actions.close(prompt_bufnr)
-						vim.notify(selection.name, vim.log.levels.INFO)
-					end)
-					return true
-				end,
-			})
-			:find()
-end, { desc = "List All Packages (telescope)" })
-
-vim.keymap.set('n', '<leader>lt', function()
-  local plugins = vim.pack.get()
-  local lines = {}
-  table.insert(lines, '=== Installed Plugins ===')
-  table.insert(lines, '')
-
-  for _, p in ipairs(plugins) do
-    local src = p.spec.src or 'Unknown'
-    local name = p.spec.name or 'Unknown'
-    local path = p.path or 'Unknown'
-    local active = p.active and 'Yes' or 'No'
-    local file = p.spec.file or 'Unknown'
-
-    table.insert(lines, string.format('Name: %s', name))
-    table.insert(lines, string.format('Active: %s', active))
-    table.insert(lines, string.format('Source: %s', src))
-    table.insert(lines, string.format('Path:   %s', path))
-    table.insert(lines, string.format('Added from: %s', file))
-    table.insert(lines, '')
-  end
-
-  -- open in new scratch buffer
-  local buf = vim.api.nvim_create_buf(true, false) -- listed & editable buffer
-  vim.api.nvim_set_option_value('buftype', 'nofile', { buf = buf })
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-  vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
-
-  -- open in new split or tab (choose one)
-  -- new split:
-  vim.cmd('tab')
-  vim.api.nvim_win_set_buf(0, buf)
-
-  -- or if you prefer a tab, comment the split above & use:
-  -- vim.cmd('tabnew')
-  -- vim.api.nvim_win_set_buf(0, buf)
-
-  -- optional: highlight the title line
-  vim.api.nvim_set_hl(0, 'PluginHeader', { fg = '#89b4fa', bold = true })
-  vim.api.nvim_buf_add_highlight(buf, -1, 'PluginHeader', 0, 0, -1)
-end, { desc = 'List All Packages (buffer)' })
+-- vim: ts=2 sts=2 sw=2 et
