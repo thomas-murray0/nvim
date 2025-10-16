@@ -1,0 +1,80 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "327fff9",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'1.*'"
+    },
+    "catppuccin": {
+      "rev": "af58927",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "gitsigns": {
+      "rev": "1ee5c1f",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "harpoon": {
+      "rev": "ed1f853",
+      "src": "https://github.com/ThePrimeagen/harpoon",
+      "version": "'harpoon2'"
+    },
+    "lsp-config": {
+      "rev": "ac98db2",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "luasnip": {
+      "rev": "21e9fec",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
+    "mason": {
+      "rev": "ad7146a",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini": {
+      "rev": "89eecd8",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "71385f1",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    },
+    "oil": {
+      "rev": "7194872",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope": {
+      "rev": "b4da76b",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "'master'"
+    },
+    "telescope-env": {
+      "rev": "00a703c",
+      "src": "https://github.com/LinArcX/telescope-env.nvim"
+    },
+    "telescope-fzf": {
+      "rev": "1f08ed6",
+      "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+    },
+    "telescope-ui": {
+      "rev": "6e51d7d",
+      "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
+    },
+    "tmux-navigator": {
+      "rev": "c45243d",
+      "src": "https://github.com/christoomey/vim-tmux-navigator"
+    },
+    "web-devicons": {
+      "rev": "b8221e4",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    }
+  }
+}
