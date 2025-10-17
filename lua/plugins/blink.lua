@@ -1,16 +1,17 @@
 vim.pack.add({
 	{ src = 'https://github.com/saghen/blink.cmp', version = "1.*" },
 })
-
 require("blink.cmp").setup(
 	{
 		signature = { enabled = true },
-		keymap = { preset = 'default' },
+		keymap = {
+			preset = 'default',
+		},
 		appearance = {
 			nerd_font_variant = 'mono'
 		},
 		sources = {
-			default = { 'lsp', 'path', 'buffer', 'snippets'},
+			default = { 'lsp', 'path', 'buffer', 'snippets' },
 		},
 		snippets = { preset = 'luasnip' },
 		completion = {
