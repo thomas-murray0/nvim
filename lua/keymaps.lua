@@ -55,32 +55,32 @@ end, { desc = 'Search Neovim files' })
 -- Harpoon --
 local harpoon = require 'harpoon'
 
-vim.keymap.set('n', '<leader>ha', function()
+map('n', '<leader>ha', function()
 	harpoon:list():add()
 end, { desc = 'Add File to Harpoon' })
 
-vim.keymap.set('n', '<leader>hr', function()
+map('n', '<leader>hr', function()
 	harpoon:list():remove()
 end, { desc = 'Remove File from Harpoon' })
 --
-vim.keymap.set('n', '<leader>hl', function()
+map('n', '<leader>hl', function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = 'List Harpoon Files' })
 
-vim.keymap.set('n', '[h', function()
+map('n', '[h', function()
 	harpoon:list():prev { ui_nav_wrap = true }
 end, { desc = 'Previous Harpoon File' })
 
-vim.keymap.set('n', ']h', function()
+map('n', ']h', function()
 	harpoon:list():next { ui_nav_wrap = true }
 end, { desc = 'Next Harpoon File' })
 
-vim.keymap.set('n', '<leader>hc', function()
+map('n', '<leader>hc', function()
 	harpoon:list():clear()
 end, { desc = 'Clear Harpoon List' })
 
 for i = 1, 9 do
-	vim.keymap.set('n', string.format('<leader>h%s', i), function()
+	map('n', string.format('<leader>h%s', i), function()
 		harpoon:list():select(i)
 	end, { desc = string.format('Jump to Harpoon File %s', i) })
 end
@@ -88,12 +88,12 @@ end
 -- LuaSnip --
 local ls = require("luasnip")
 
-vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+map({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
+map({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
+map({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
 
 -- Misc --
-vim.keymap.set('n', '<leader>lp', function()
+map('n', '<leader>lp', function()
 	local pickers = require('telescope.pickers')
 	local finders = require('telescope.finders')
 	local conf = require('telescope.config').values
@@ -103,13 +103,12 @@ vim.keymap.set('n', '<leader>lp', function()
 
 	local plugins = vim.pack.get()
 
-	-- formatter for each entry (columns)
 	local displayer = entry_display.create({
 		separator = " ",
 		items = {
-			{ width = 30 },       -- plugin name
-			{ width = 10 },       -- status
-			{ width = 75 }, -- path
+			{ width = 30 },
+			{ width = 10 },
+			{ width = 75 },
 		},
 	})
 
@@ -144,10 +143,10 @@ vim.keymap.set('n', '<leader>lp', function()
 					entry_maker = function(entry) return entry end,
 				},
 				sorter = conf.generic_sorter({}),
-				attach_mappings = function(_, map)
-					map("i", "<esc>", actions.close)
-					map("n", "<esc>", actions.close)
-					map("i", "<CR>", function(prompt_bufnr)
+				attach_mappings = function(_, mapp)
+					mapp("i", "<esc>", actions.close)
+					mapp("n", "<esc>", actions.close)
+					mapp("i", "<CR>", function(prompt_bufnr)
 						local selection = action_state.get_selected_entry()
 						actions.close(prompt_bufnr)
 						vim.notify(selection.name, vim.log.levels.INFO)
@@ -158,7 +157,7 @@ vim.keymap.set('n', '<leader>lp', function()
 			:find()
 end, { desc = "List All Packages (telescope)" })
 
-vim.keymap.set('n', '<leader>lt', function()
+map('n', '<leader>lt', function()
   local plugins = vim.pack.get()
   local lines = {}
   table.insert(lines, '=== Installed Plugins ===')
@@ -179,22 +178,14 @@ vim.keymap.set('n', '<leader>lt', function()
     table.insert(lines, '')
   end
 
-  -- open in new scratch buffer
-  local buf = vim.api.nvim_create_buf(true, false) -- listed & editable buffer
+  local buf = vim.api.nvim_create_buf(true, false)
   vim.api.nvim_set_option_value('buftype', 'nofile', { buf = buf })
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
 
-  -- open in new split or tab (choose one)
-  -- new split:
-  vim.cmd('tab')
+  vim.cmd('split')
   vim.api.nvim_win_set_buf(0, buf)
 
-  -- or if you prefer a tab, comment the split above & use:
-  -- vim.cmd('tabnew')
-  -- vim.api.nvim_win_set_buf(0, buf)
-
-  -- optional: highlight the title line
   vim.api.nvim_set_hl(0, 'PluginHeader', { fg = '#89b4fa', bold = true })
   vim.api.nvim_buf_add_highlight(buf, -1, 'PluginHeader', 0, 0, -1)
 end, { desc = 'List All Packages (buffer)' })
