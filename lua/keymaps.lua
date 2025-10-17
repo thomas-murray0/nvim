@@ -19,9 +19,15 @@ map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
 
 --- Plugins ---
 
+-- Blink --
+-- Keymaps setup in ~/.config/nvim/lua/plugins/blink.lua
+
+-- Treesitter --
+-- Textobject keymaps setup in ~/.config/nvim/lua/plugins/treesitter.lua
+
 -- Oil --
 map('n', '-', ':Oil<CR>')
--- Additional Keymaps setup in ~/.config/nvim/lua/plugins/oil.lua
+-- Additional keymaps setup in ~/.config/nvim/lua/plugins/oil.lua
 
 -- Tmux Nav --
 map('n', '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>')
@@ -98,7 +104,7 @@ map({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
 -- Misc --
 
 -- Creates a Telescope window containing all packages in vim.pack.get()
-map('n', '<leader>lp', function()
+map('n', '<leader>pt', function()
 	local pickers = require('telescope.pickers')
 	local finders = require('telescope.finders')
 	local conf = require('telescope.config').values
@@ -163,36 +169,38 @@ map('n', '<leader>lp', function()
 end, { desc = "List All Packages (telescope)" })
 
 -- Creates a scratch tab split with all plugins from vim.pack.get()
--- Allows for macro vim.pack.del() or .update()
-map('n', '<leader>lt', function()
-  local plugins = vim.pack.get()
-  local lines = {}
-  table.insert(lines, '=== Installed Plugins ===')
-  table.insert(lines, '')
+-- Purpose: Allows for macro to vim.pack.del() or .update()
+-- Future: Could modify to have a Lazy.nvim style updater/deleter
+map('n', '<leader>pl', function()
+	local plugins = vim.pack.get()
+	local lines = {}
+	table.insert(lines, '=== Installed Plugins ===')
+	table.insert(lines, '')
 
-  for _, p in ipairs(plugins) do
-    local src = p.spec.src or 'Unknown'
-    local name = p.spec.name or 'Unknown'
-    local path = p.path or 'Unknown'
-    local active = p.active and 'Yes' or 'No'
-    local file = p.spec.file or 'Unknown'
+	for _, p in ipairs(plugins) do
+		local src = p.spec.src or 'Unknown'
+		local name = p.spec.name or 'Unknown'
+		local path = p.path or 'Unknown'
+		local active = p.active and 'Yes' or 'No'
+		local file = p.spec.file or 'Unknown'
 
-    table.insert(lines, string.format('Name: %s', name))
-    table.insert(lines, string.format('Active: %s', active))
-    table.insert(lines, string.format('Source: %s', src))
-    table.insert(lines, string.format('Path:   %s', path))
-    table.insert(lines, string.format('Added from: %s', file))
-    table.insert(lines, '')
-  end
+		table.insert(lines, string.format('Name: %s', name))
+		table.insert(lines, string.format('Active: %s', active))
+		table.insert(lines, string.format('Source: %s', src))
+		table.insert(lines, string.format('Path:   %s', path))
+		table.insert(lines, string.format('Added from: %s', file))
+		table.insert(lines, '')
+	end
 
-  local buf = vim.api.nvim_create_buf(true, false)
-  vim.api.nvim_set_option_value('buftype', 'nofile', { buf = buf })
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-  vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
+	local buf = vim.api.nvim_create_buf(true, false)
+	vim.api.nvim_set_option_value('buftype', 'nofile', { buf = buf })
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+	vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
 
-  vim.cmd('split')
-  vim.api.nvim_win_set_buf(0, buf)
+	vim.cmd('split')
+	vim.api.nvim_win_set_buf(0, buf)
 
-  vim.api.nvim_set_hl(0, 'PluginHeader', { fg = '#89b4fa', bold = true })
-  vim.api.nvim_buf_add_highlight(buf, -1, 'PluginHeader', 0, 0, -1)
+	local ns = vim.api.nvim_create_namespace('')
+	vim.api.nvim_set_hl(0, 'PluginHeader', { fg = '#ffb4fa', bold = true })
+	vim.hl.range(buf, ns, 'PluginHeader', { 0, 0 }, { 0, -1 }, { regtype = 'v', inclusive = true }) -- is the up
 end, { desc = 'List All Packages (buffer)' })
