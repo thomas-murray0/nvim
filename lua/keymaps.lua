@@ -9,13 +9,13 @@ map('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 map('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP Rename' })
 
 local builtin = require('telescope.builtin')
+map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
 map('n', 'gd', builtin.lsp_definitions, { desc = "Goto definition" })
 
 map('n', 'gr', builtin.lsp_references, { desc = 'Goto references' })
 map('n', 'gI', builtin.lsp_implementations, { desc = 'Goto Implementation' })
--- what is a code action?
--- map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
-map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
+
+map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
 
 --- Plugins ---
 
@@ -76,13 +76,14 @@ map('n', '<leader>hl', function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = 'List Harpoon Files' })
 
-map('n', '[h', function()
-	harpoon:list():prev { ui_nav_wrap = true }
-end, { desc = 'Previous Harpoon File' })
-
-map('n', ']h', function()
-	harpoon:list():next { ui_nav_wrap = true }
-end, { desc = 'Next Harpoon File' })
+-- Conflicts with git hunks
+-- map('n', '[h', function()
+-- 	harpoon:list():prev { ui_nav_wrap = true }
+-- end, { desc = 'Previous Harpoon File' })
+--
+-- map('n', ']h', function()
+-- 	harpoon:list():next { ui_nav_wrap = true }
+-- end, { desc = 'Next Harpoon File' })
 
 map('n', '<leader>hc', function()
 	harpoon:list():clear()
@@ -95,11 +96,7 @@ for i = 1, 9 do
 end
 
 -- LuaSnip --
-local ls = require("luasnip")
-
-map({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
-map({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-map({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+-- Using blink integration
 
 -- Misc --
 

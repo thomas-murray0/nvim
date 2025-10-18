@@ -17,8 +17,6 @@ require("blink.cmp").setup(
 			['Up'] = { 'scroll_documentation_up', 'fallback' },
 			['<Down>'] = { 'scroll_documentation_down', 'fallback' },
 
-			['<C-q>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end }, -- show snippets
-
 			['<Tab>'] = { 'snippet_forward', 'fallback' },
 			['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 
@@ -32,8 +30,18 @@ require("blink.cmp").setup(
 		},
 		sources = {
 			default = { 'lsp', 'path', 'buffer', 'snippets' },
+			providers = {
+				snippets = {
+					async = true,
+				},
+				buffer = {
+					async = true,
+				},
+			},
 		},
-		snippets = { preset = 'luasnip' },
+		snippets = {
+			preset = 'luasnip',
+		},
 		completion = {
 			-- ghost_text = { enabled = true },
 			documentation = { auto_show = true },

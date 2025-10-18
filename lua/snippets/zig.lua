@@ -1,5 +1,4 @@
 return {
-
   s(
     'stdout',
     fmt(
