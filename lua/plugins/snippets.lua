@@ -4,12 +4,6 @@ vim.pack.add({
 })
 
 local luasnip = require("luasnip")
-luasnip.setup(
-	{
-		enable_autosnippets = true,
-		history = true,
-		updateevents = "TextChanged,TextChangedI",
-	}
-)
+luasnip.setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_lua").load({ paths = "~/dotfiles/.config/nvim/lua/snippets/" })
