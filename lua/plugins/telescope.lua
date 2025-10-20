@@ -7,6 +7,7 @@ vim.pack.add({
 })
 
 local telescope = require("telescope")
+local themes = require("telescope.themes")
 
 telescope.setup({
 	defaults = {
@@ -31,6 +32,12 @@ telescope.setup({
 			preview_cutoff = 40,
 		}
 	},
+	pickers = {
+		-- set defaults here for pickers
+		find_files = {
+			hidden = true,
+		},
+	},
 	extensions = {
 		fzf = {
 			fuzzy = true,
@@ -41,4 +48,4 @@ telescope.setup({
 	}
 })
 telescope.load_extension("ui-select")
--- telescope.load_extension("fzf") -- make sure to make build telescope-fzf-native
+telescope.load_extension("fzf") -- make sure to make build telescope-fzf-native
