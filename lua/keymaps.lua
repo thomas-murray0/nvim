@@ -3,7 +3,8 @@ local map = vim.keymap.set
 -- Neovim --
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-map('n', '<leader>so', ':source<CR>')
+map('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>')
+
 -- LSP --
 map('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 map('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP Rename' })
@@ -47,9 +48,7 @@ map('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
 map('n', '<leader>sr', builtin.registers, { desc = 'Search Registers' })
 map('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
 map('n', '<leader>sq', builtin.quickfix, { desc = 'Search in Quickfix List' })
-map('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
-
--- map('n', '<leader>someDopeMapping', builtin.buffers, { desc = 'Search Files in Another Directory' })
+map('n', '<leader>b', builtin.buffers, { desc = 'Find existing buffers' })
 
 map('n', '<leader>/', function()
 	builtin.current_buffer_fuzzy_find()
@@ -61,6 +60,186 @@ map('n', '<leader>sn', function()
 		prompt_title = "Search Neovim Files",
 	}
 end, { desc = 'Search Neovim files' })
+
+--- <<< START find_files_with_path
+vim.keymap.set("n", "<leader>spf", function()
+  local home = vim.fn.expand("~") -- resolves to $HOME
+  vim.ui.input({
+    prompt = "Search files in directory: ",
+    default = home .. "/",
+    completion = "dir",
+  }, function(dir)
+    if not dir or dir == "" then
+      return
+    end
+    dir = vim.fn.expand(dir)
+
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.notify(("Not a directory: %s"):format(dir), vim.log.levels.WARN)
+      return
+    end
+
+    builtin.find_files({
+      cwd = dir,
+      hidden = true,   -- toggle as needed
+      no_ignore = true, -- uncomment if you want to include ignored files
+    })
+  end)
+end, { desc = "Search a Path's Files" })
+--- find_files_with_path END >>>
+
+-- <<< live_grep_with_args START
+local function parse_args(argline)
+	-- Returns:
+	--   glob_pattern: nil | string | table
+	--   type_filter: nil | string  (single include type)
+	--   additional_args: nil | table (for --type-not and extras)
+	--
+	-- Supports:
+	--   -g PATTERN | --glob PATTERN | -gPATTERN | --glob=PATTERN
+	--   -tTYPE | --type TYPE | --type=TYPE
+	--   -T TYPE | --type-not TYPE | --type-not=TYPE
+	-- Shorthands:
+	--   -t<name>  (e.g. -trust)
+	--   -T<name>  (e.g. -Trust)
+
+	if not argline or argline == "" then
+		return nil, nil, nil
+	end
+
+	local tokens = {}
+	-- Simple shell-like split on whitespace
+	for tok in argline:gmatch("%S+") do
+		table.insert(tokens, tok)
+	end
+
+	local globs = {}
+	local type_include = nil
+	local extra = {}
+
+	local i = 1
+	while i <= #tokens do
+		local tok = tokens[i]
+
+		-- --glob=PATTERN
+		local glob_eq = tok:match("^%-%-glob=(.+)$")
+		if glob_eq then
+			table.insert(globs, glob_eq)
+			i = i + 1
+			-- --glob PATTERN
+		elseif tok == "--glob" then
+			if tokens[i + 1] then
+				table.insert(globs, tokens[i + 1])
+				i = i + 2
+			else
+				break
+			end
+			-- -gPATTERN
+		elseif tok:match("^%-g.+") then
+			table.insert(globs, tok:sub(3))
+			i = i + 1
+			-- -g PATTERN
+		elseif tok == "-g" then
+			if tokens[i + 1] then
+				table.insert(globs, tokens[i + 1])
+				i = i + 2
+			else
+				break
+			end
+
+			-- --type=TYPE
+		elseif tok:match("^%-%-type=") then
+			type_include = tok:match("^%-%-type=(.+)$")
+			i = i + 1
+			-- --type TYPE
+		elseif tok == "--type" then
+			if tokens[i + 1] then
+				type_include = tokens[i + 1]
+				i = i + 2
+			else
+				break
+			end
+			-- -tTYPE shorthand
+		elseif tok:match("^%-t.+") then
+			type_include = tok:sub(3)
+			i = i + 1
+
+			-- --type-not=TYPE
+		elseif tok:match("^%-%-type%-not=") then
+			local tnot = tok:match("^%-%-type%-not=(.+)$")
+			table.insert(extra, "--type-not")
+			table.insert(extra, tnot)
+			i = i + 1
+			-- --type-not TYPE
+		elseif tok == "--type-not" then
+			if tokens[i + 1] then
+				table.insert(extra, "--type-not")
+				table.insert(extra, tokens[i + 1])
+				i = i + 2
+			else
+				break
+			end
+			-- -TTYPE shorthand
+		elseif tok:match("^%-T.+") then
+			table.insert(extra, "--type-not")
+			table.insert(extra, tok:sub(3))
+			i = i + 1
+		else
+			-- Ignore unknown tokens; you can push them to extra if you want to
+			-- pass through arbitrary ripgrep flags:
+			-- table.insert(extra, tok)
+			i = i + 1
+		end
+	end
+
+	local glob_opt = nil
+	if #globs == 1 then
+		glob_opt = globs[1]
+	elseif #globs > 1 then
+		glob_opt = globs
+	end
+
+	if #extra == 0 then
+		extra = nil
+	end
+
+	return glob_opt, type_include, extra
+end
+
+local function live_grep_dir_with_args()
+	local home = vim.fn.expand("~")
+
+	vim.ui.input({
+		prompt = "Directory to search: ",
+		default = home .. "/",
+		completion = "dir",
+	}, function(dir)
+		if not dir or dir == "" then
+			return
+		end
+		dir = vim.fn.expand(dir)
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.notify(("Not a directory: %s"):format(dir), vim.log.levels.WARN)
+			return
+		end
+
+		vim.ui.input({
+			prompt = "Args (-g/--glob, -t/--type, -T/--type-not). Example: -g *.lua -trust ",
+			default = "",
+		}, function(argline)
+			local glob_opt, type_include, extra = parse_args(argline)
+
+			builtin.live_grep({
+				cwd = dir,
+				glob_pattern = glob_opt, -- string or table or nil
+				type_filter = type_include, -- string or nil
+				additional_args = extra, -- table or nil
+			})
+		end)
+	end)
+end
+map("n", "<leader>spg", live_grep_dir_with_args, { desc = "Search Path with Grep (can use rg --type | --glob)" })
+-- live_grep_with_args END >>>
 
 -- Harpoon --
 local harpoon = require 'harpoon'
