@@ -35,10 +35,10 @@ telescope.setup({
 	pickers = {
 		-- set defaults here for pickers
 		autocommands = {},
-		buffers = {},
+		buffers = {
+		},
 		builtin = {
 			use_default_ops = true, -- picker chosen should use its defaults
-			theme = "dropdown",
 			-- previewer = false,
 		},
 		colorscheme = {

@@ -48,7 +48,7 @@ map('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
 map('n', '<leader>sr', builtin.registers, { desc = 'Search Registers' })
 map('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
 map('n', '<leader>sq', builtin.quickfix, { desc = 'Search in Quickfix List' })
-map('n', '<leader>b', builtin.buffers, { desc = 'Find existing buffers' })
+map('n', '<leader>sb', builtin.buffers, { desc = 'Find existing buffers' })
 
 map('n', '<leader>/', function()
 	builtin.current_buffer_fuzzy_find()
