@@ -9,6 +9,14 @@
       "rev": "af58927",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "dracula": {
+      "rev": "041d923",
+      "src": "https://github.com/Mofiqul/dracula.nvim"
+    },
+    "eldritch": {
+      "rev": "3bcdd32",
+      "src": "https://github.com/eldritch-theme/eldritch.nvim"
+    },
     "friendly-snippets": {
       "rev": "572f566",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -17,10 +25,18 @@
       "rev": "1ee5c1f",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "gruvbox": {
+      "rev": "5e0a460",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
     "harpoon": {
       "rev": "ed1f853",
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
+    },
+    "kanagawa": {
+      "rev": "aef7f5c",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "lsp-config": {
       "rev": "ac98db2",
@@ -34,9 +50,17 @@
       "rev": "ad7146a",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "miasma": {
+      "rev": "627f2e1",
+      "src": "https://github.com/xero/miasma.nvim"
+    },
     "mini": {
       "rev": "89eecd8",
       "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nord": {
+      "rev": "80c1e53",
+      "src": "https://github.com/shaunsingh/nord.nvim"
     },
     "nvim-treesitter": {
       "rev": "42fc28ba",
@@ -51,9 +75,17 @@
       "rev": "7194872",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "oldworld": {
+      "rev": "d0af80c",
+      "src": "https://github.com/dgox16/oldworld.nvim"
+    },
     "plenary": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "rose-pine": {
+      "rev": "72a04c4",
+      "src": "https://github.com/rose-pine/neovim"
     },
     "telescope": {
       "rev": "b4da76b",
@@ -75,6 +107,14 @@
     "tmux-navigator": {
       "rev": "c45243d",
       "src": "https://github.com/christoomey/vim-tmux-navigator"
+    },
+    "tokyo-night": {
+      "rev": "8734a4e",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "vscode": {
+      "rev": "cb9df08",
+      "src": "https://github.com/Mofiqul/vscode.nvim"
     },
     "web-devicons": {
       "rev": "b8221e4",
