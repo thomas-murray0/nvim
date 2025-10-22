@@ -80,7 +80,7 @@
       "rev": "b8221e4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
-    "yoda.nvim": {
+    "yoda": {
       "rev": "7106287",
       "src": "https://github.com/kuri-sun/yoda.nvim"
     }
