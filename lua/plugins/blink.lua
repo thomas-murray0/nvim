@@ -7,7 +7,7 @@ require("blink.cmp").setup(
 		signature = { enabled = true },
 		keymap = {
 			preset = 'none',
-			['<C-k>'] = { 'show', 'show_documentation', 'hide_documentation', 'fallback' },
+			['<C-i>'] = { 'show', 'show_documentation', 'hide_documentation', 'fallback' },
 			['<C-e>'] = { 'hide', 'fallback' },
 			['<C-y>'] = { 'select_and_accept', 'fallback' },
 

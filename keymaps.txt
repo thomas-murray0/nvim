@@ -1,0 +1,39 @@
+NORMAL MODE
+
+INSERT MODE
+Key|Default Action|Remapped Action
+<C-A>|Insert previously inserted text|
+<C-B>|Move cursor left one character (like <Left>)|
+<C-C>|Cancel insert mode (same as <Esc>)|
+<C-D>|Delete one shiftwidth of indent, or one character if not indented useful in autoindent|
+<C-E>|Insert the character below current line (useful in completion)|
+<C-F>|Move cursor right one character|
+<C-G>U|Start a new undo block here (Use <C-G>U<C-U> to undo line input)|
+<C-G>j|Temporarily select next completion item during completion|
+<C-G>k|Temporarily select previous completion item during completion|
+<C-H>|Backspace|
+<C-I>|Same as <Tab>|
+<C-J>|Insert newline (like <CR>)|
+<C-K>|Start digraph input then type two chars e.g. a' → á|
+<C-L>|Insert character literally (depends on 'insertmode') seldom used|
+<C-M>|Insert newline (alias for <CR>)|
+<C-N>|Next match in completion popup built‑in completion key|
+<C-O>|Run one Normal‑mode command, then return to Insert mode “one‑shot” normal command|
+<C-P>|Previous match in completion popup|
+<C-Q>|Same as <C-V> in most terminals (insert literal); terminal‑dependent|
+<C-R>|Insert contents of a register (e.g. <C-R>" inserts last yanked text)|
+<C-S>|Usually stopped by terminal‑flow control (XON/XOFF); rarely available can be remapped if disabled|
+<C-T>|Add one shiftwidth indent reverse of <C-D>|
+<C-U>|Delete from cursor to start of line|
+<C-V>|Literal next character (insert any key literally) <C-V><Esc> inserts actual Esc|
+<C-W>|Delete one word backward|
+<C-X>|Start Insert‑mode completion menu (sub‑mode selector) see below|
+<C-Y>|Insert the character above current line|
+<C-Z>|Suspend Vim (to background, in terminal)|
+<C-[>|Exit Insert mode (same as <Esc>)|
+<C-]>|Triggers abbreviation expansion (if any)|
+<C-\>|Apparently is the same as <C-O>|
+<C-^>|(technically same as <C-6>) edits alternate file in Normal, not used in Insert|
+<C-_>|Undo (if 'allowrevins' set, toggles reverse insert) rarely used|
+
+VISUAL MODE
