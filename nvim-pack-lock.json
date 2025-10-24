@@ -112,6 +112,10 @@
       "rev": "8734a4e",
       "src": "https://github.com/folke/tokyonight.nvim"
     },
+    "undo": {
+      "rev": "928d0c2",
+      "src": "https://github.com/debugloop/telescope-undo.nvim"
+    },
     "vscode": {
       "rev": "cb9df08",
       "src": "https://github.com/Mofiqul/vscode.nvim"

@@ -4,6 +4,7 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim', name = "telescope-fzf" },
 	{ src = 'https://github.com/LinArcX/telescope-env.nvim',               name = "telescope-env" },
 	{ src = 'https://github.com/nvim-tree/nvim-web-devicons',              name = "web-devicons" },
+	{ src = 'https://github.com/debugloop/telescope-undo.nvim',              name = "undo" },
 })
 
 local telescope = require("telescope")
@@ -108,3 +109,4 @@ telescope.setup({
 telescope.load_extension("env")
 telescope.load_extension("ui-select")
 telescope.load_extension("fzf") -- make sure to make build telescope-fzf-native
+telescope.load_extension("undo")

@@ -1,39 +1,167 @@
 NORMAL MODE
 
+Key           |Default Action                                       |Remapped Action
+a             |Append                                               |
+b             |Back word                                            |
+c             |Change                                               |
+d             |Delete                                               |
+e             |End of word                                          |
+f             |Find                                                 |
+g             |Goto <another key>                                   |
+h             |Left                                                 |
+i             |Insert                                               |
+j             |Down                                                 |
+k             |Up                                                   |
+l             |Right                                                |
+m             |Mark                                                 |
+n             |Next                                                 |
+o             |Newline below                                        |
+p             |Paste after                                          |
+q             |Macro start ALSO "q:" opens previous commands        |
+r             |Replace                                              |
+s             |Substitute                                           |
+t             |To                                                   |
+u             |Undo                                                 |
+v             |Visual mode                                          |
+w             |Word next                                            |
+x             |Delete under cursor                                  |
+y             |Yank                                                 |
+z             |Fold                                                 |
+A             |Append end                                           |
+B             |Back full                                            |
+C             |Change to end                                        |
+D             |Delete to end                                        |
+E             |End full                                             |
+F             |Find back                                            |
+G             |Goto end                                             |
+H             |High                                                 |
+I             |Insert at start                                      |
+J             |Condense line below                                  |
+K             |Indefiy below                                        |
+L             |Next line                                            |
+M             |Middle                                               |
+N             |Next previous                                        |
+O             |Newline above                                        |
+P             |Paste before                                         |
+Q             |Ex (games) mode                                      |
+R             |Replace continuous                                   |
+S             |Change entire line                                   |
+T             |To before                                            |
+U             |Undo all changes on line                             |
+V             |Visual line mode                                     |
+W             |Word full                                            |
+X             |Delete before cursor                                 |
+Y             |Yank to end                                          |
+Z             |Save and quit if ZZ                                  |
+0             |Goto start of line                                   |
+~             |Toggle case                                          |
+!             |Some not command???                                  |
+@             |Run register "[a-zA-Z]" as macro or @@ run last macro|
+#             |Select under and goto previous                       |
+$             |Goto last char in line                               |
+%             |Jump between brackets                                |
+^             |Goto to first char in line                           |
+&             |Repeat last substitution                             |
+*             |Select under and goto next                           |
+:             |Command mode                                         |
+/             |Search mode                                          |
+<C-A>         |                                                     |
+<C-B>         |                                                     |
+<C-C>         |Interrupt is caught                                  |
+<C-D>         |Jump down in buffer                                  |
+<C-E>         |Smooth move down                                     |
+<C-F>         |                                                     |
+<C-G>         |Gives info about current buffer                      |
+<C-H>         |                                                     |TMUX: Goto pane left
+<C-I>         |Jump forward in jump list                            |
+<C-J>         |                                                     |TMUX: Goto pane under
+<C-K>         |                                                     |TMUX: Goto pane above
+<C-L>         |                                                     |TMUX: Goto pane right
+<C-M>         |Next line                                            |
+<C-N>         |Next line                                            |
+<C-O>         |Jump back in jump list                               |
+<C-P>         |Previous line                                        |
+<C-Q>         |Also visual block mode                               |
+<C-R>         |Redo                                                 |
+<C-S>         |                                                     |
+<C-T>         |Tag stack                                            |
+<C-U>         |Jump up in buffer                                    |
+<C-V>         |Visual block mode                                    |
+<C-W>         |                                                     |
+<C-X>         |                                                     |
+<C-Y>         |Smooth move up                                       |
+<C-Z>         |Suspend Vim                                          |
+<leader>/     |                                                     |TELESCOPE: Search fuzzily current buffer
+<leader>h[0-9]|                                                     |HARPOON: Jump to file
+<leader>ha    |                                                     |HARPOON: Add file
+<leader>hc    |                                                     |HARPOON: Clear files
+<leader>hl    |                                                     |HARPOON: List files
+<leader>hr    |                                                     |HARPOON: Remove file
+<leader>la    |                                                     |LSP: Code action
+<leader>lf    |                                                     |LSP: Format buffer
+<leader>lr    |                                                     |LSP: Rename under cursor
+<leader>pl    |                                                     |CUSTOM: Open new buffer with installed plugins info
+<leader>pt    |                                                     |TELESCOPE: Search installed plugins (vim.pack)
+<leader>s.    |                                                     |TELESCOPE: Search recent buffers
+<leader>sb    |                                                     |TELESCOPE: Search buffers
+<leader>sd    |                                                     |TELESCOPE: Search file diagnostics
+<leader>se    |                                                     |TELESCOPE: Search environment variables
+<leader>sf    |                                                     |TELESCOPE: Search files in cwd
+<leader>sg    |                                                     |TELESCOPE: Search grep in cwd
+<leader>sh    |                                                     |TELESCOPE: Search help
+<leader>sk    |                                                     |TELESCOPE: Search keymaps
+<leader>sn    |                                                     |TELESCOPE: Search neovim config files
+<leader>so    |                                                     |CUSTOM: Source neovim config
+<leader>spf   |                                                     |TELESCOPE: Search files in another directory
+<leader>spg   |                                                     |TELESCOPE: Search grep in another directory
+<leader>sq    |                                                     |TELESCOPE: Search quickfix list
+<leader>sr    |                                                     |TELESCOPE: Search registers
+<leader>st    |                                                     |TELESCOPE: Search telescope builtins
+<leader>su    |                                                     |TELESCOPE: Search undo list
+<leader>sw    |                                                     |TELESCOPE: Search word
+
 INSERT MODE
-Key|Default Action|Remapped Action
-<C-A>|Insert previously inserted text|
-<C-B>|Move cursor left one character (like <Left>)|
-<C-C>|Cancel insert mode (same as <Esc>)|
-<C-D>|Delete one shiftwidth of indent, or one character if not indented useful in autoindent|
-<C-E>|Insert the character below current line (useful in completion)|
-<C-F>|Move cursor right one character|
-<C-G>U|Start a new undo block here (Use <C-G>U<C-U> to undo line input)|
-<C-G>j|Temporarily select next completion item during completion|
-<C-G>k|Temporarily select previous completion item during completion|
-<C-H>|Backspace|
-<C-I>|Same as <Tab>|
-<C-J>|Insert newline (like <CR>)|
-<C-K>|Start digraph input then type two chars e.g. a' → á|
-<C-L>|Insert character literally (depends on 'insertmode') seldom used|
-<C-M>|Insert newline (alias for <CR>)|
-<C-N>|Next match in completion popup built‑in completion key|
-<C-O>|Run one Normal‑mode command, then return to Insert mode “one‑shot” normal command|
-<C-P>|Previous match in completion popup|
-<C-Q>|Same as <C-V> in most terminals (insert literal); terminal‑dependent|
-<C-R>|Insert contents of a register (e.g. <C-R>" inserts last yanked text)|
-<C-S>|Usually stopped by terminal‑flow control (XON/XOFF); rarely available can be remapped if disabled|
-<C-T>|Add one shiftwidth indent reverse of <C-D>|
-<C-U>|Delete from cursor to start of line|
-<C-V>|Literal next character (insert any key literally) <C-V><Esc> inserts actual Esc|
-<C-W>|Delete one word backward|
-<C-X>|Start Insert‑mode completion menu (sub‑mode selector) see below|
-<C-Y>|Insert the character above current line|
-<C-Z>|Suspend Vim (to background, in terminal)|
-<C-[>|Exit Insert mode (same as <Esc>)|
-<C-]>|Triggers abbreviation expansion (if any)|
-<C-\>|Apparently is the same as <C-O>|
-<C-^>|(technically same as <C-6>) edits alternate file in Normal, not used in Insert|
-<C-_>|Undo (if 'allowrevins' set, toggles reverse insert) rarely used|
+
+Key    |Default Action                                                        |Remapped Action
+<C-A>  |Insert previously inserted text                                       |BLINK: toggle signature
+<C-B>  |                                                                      |
+<C-C>  |Exit insert mode (like <Esc>)                                         |
+<C-D>  |Delete one shiftwidth of indent (USELESS)                             |BLINK: show documentation
+<C-E>  |Insert the character below current line                               |BLINK: hide documentation
+<C-F>  |                                                                      |
+<C-G>  |Does something                                                        |
+<C-H>  |Backspace                                                             |
+<C-I>  |Indent (alias for <Tab>)(MIGHT BE UNREMAPPABLE [1])                   |
+<C-J>  |Insert newline (like <CR>)                                            |
+<C-K>  |Start digraph input then type two chars (e.g. a' → á)                 |
+<C-L>  |                                                                      |
+<C-M>  |Insert newline (alias for <CR>)                                       |
+<C-N>  |Next match in completion popup                                        |BLINK: next completion
+<C-O>  |Run one Normal‑mode command, then return to Insert mode               |
+<C-P>  |Previous match in completion popup                                    |BLINK: previous completion
+<C-Q>  |Insert literal next character (like <C-V>)                            |
+<C-R>  |Insert contents of a register (e.g. <C-R>+ inserts clipboard register)|
+<C-S>  |Mapped to vim.lsp.buf.signature_help(), allegedly                     |
+<C-T>  |Add one shiftwidth indent reverse of <C-D> (USELESS)                  |
+<C-U>  |Delete from cursor to start of line                                   |
+<C-V>  |Insert literal next character                                         |
+<C-W>  |Delete one word backward                                              |
+<C-X>  |Start Insert‑mode completion menu (kinda GOATED)                      |
+<C-Y>  |Insert the character above current line                               |BLINK: accept completion
+<C-Z>  |Suspend Vim                                                           |
+<C-[>  |Exit Insert mode (<Esc> is an alias for this)                         |
+<C-]>  |Triggers abbreviation expansion (if any)                              |
+<C-\>  |No clue but it hangs                                                  |
+<Tab>  |Insert tab                                                            |BLINK: snippet forward
+<S-Tab>|Insert tab                                                            |BLINK: snippet backward
+<Up>   |probably a ceiling                                                    |BLINK: scroll documentation up
+<Down> |a floor unless falling                                                |BLINK: scroll documentation down
+<Left> |useless satanic hand                                                  |
+<Right>|good godly hand                                                       |
 
 VISUAL MODE
+
+Key    |Default Action                                                        |Remapped Action
+
+NOTES
+[1] Terminals treat <C-I> as <Tab>, modern terminals like Kitty might mitigate this and send a different literal 

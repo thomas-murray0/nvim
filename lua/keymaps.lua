@@ -49,6 +49,7 @@ map('n', '<leader>sr', builtin.registers, { desc = 'Search Registers' })
 map('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
 map('n', '<leader>sq', builtin.quickfix, { desc = 'Search in Quickfix List' })
 map('n', '<leader>sb', builtin.buffers, { desc = 'Search existing Buffers' })
+map('n', '<leader>su', "<cmd>Telescope undo<CR>", {desc = 'Search undo list'})
 map('n', '<leader>se', "<cmd>Telescope env<CR>", { desc = 'Search Environment variables' })
 
 map('n', '<leader>/', function()
