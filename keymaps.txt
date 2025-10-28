@@ -163,5 +163,26 @@ VISUAL MODE
 
 Key    |Default Action                                                        |Remapped Action
 
+
+<C-X> (^X) MODE a.k.a. X-GAMES MODE
+
+Key   |Action
+    |Tags file
+    |Definition Completion
+    |Scrolls down
+    |File name completion
+^I [2]|Keyword path completion
+    |Dictionary
+    |Whole line completion
+    |Next option
+    |Omnifunc
+    |Previous option
+    |Register completion
+s     |Spell checking
+    |Complete function
+    |Command-line completion
+    |Scrolls up
+
 NOTES
 [1] Terminals treat <C-I> as <Tab>, modern terminals like Kitty might mitigate this and send a different literal 
+[2] Can't insert literal, who knows why AND THATS WHY IM SWITCHING TO HELIX or KAKOUNE
