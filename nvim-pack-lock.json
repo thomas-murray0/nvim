@@ -104,6 +104,10 @@
       "rev": "6e51d7d",
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
+    "test": {
+      "rev": "2c264d2",
+      "src": "https://github.com/vim-test/vim-test"
+    },
     "tmux-navigator": {
       "rev": "c45243d",
       "src": "https://github.com/christoomey/vim-tmux-navigator"

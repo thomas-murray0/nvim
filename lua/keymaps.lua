@@ -3,7 +3,11 @@ local map = vim.keymap.set
 -- Neovim --
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-map('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>')
+map('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>', {desc = "Source Neovim Config"})
+
+-- Testing --
+
+map('n', '<leader>t.', ':TestFile<CR>', {desc = "Test current file"})
 
 -- LSP --
 map('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })

@@ -23,3 +23,5 @@ require 'plugins/harpoon'
 require 'plugins/gitsigns'
 
 require 'plugins/snippets'
+
+require 'plugins/test'
