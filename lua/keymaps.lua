@@ -5,6 +5,8 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 map('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>', {desc = "Source Neovim Config"})
 
+map('n', '<leader>mk', ':make<CR>', {desc = "Run :make on current file"})
+
 -- Testing --
 
 map('n', '<leader>t.', ':TestFile<CR>', {desc = "Test current file"})
