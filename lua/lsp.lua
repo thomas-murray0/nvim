@@ -3,6 +3,7 @@ local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
 -- Define all of the LSP servers you want, with optional per-server config
 local servers = {
 	clangd = {},
+	gopls = {},
 	lua_ls = {
 		settings = {
 			Lua = {

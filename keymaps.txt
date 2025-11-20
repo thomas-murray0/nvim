@@ -119,6 +119,7 @@ $             |Goto last char in line                               |
 <leader>st    |                                                     |TELESCOPE: Search telescope builtins
 <leader>su    |                                                     |TELESCOPE: Search undo list
 <leader>sw    |                                                     |TELESCOPE: Search word
+<leader>t.    |                                                     |VIM-TEST: Run tests in current file
 
 INSERT MODE
 
@@ -182,6 +183,9 @@ s     |Spell checking
     |Complete function
     |Command-line completion
     |Scrolls up
+
+MISC
+can send telescope output to quickfix list using <CTRL-Q>
 
 NOTES
 [1] Terminals treat <C-I> as <Tab>, modern terminals like Kitty might mitigate this and send a different literal 
