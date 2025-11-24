@@ -21,6 +21,6 @@ return {
 			const allocator = gpa.allocator();
 			]], {})),
 	s('dprint', {
-		t 'std.debug.print("', i(1), t '", .{', i(2), t '};', i(0),
+		t 'std.debug.print("', i(1), t '", .{', i(2), t '});', i(0),
 	}),
 }
