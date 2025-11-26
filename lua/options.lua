@@ -31,7 +31,7 @@ vim.opt.scrolloff = 5
 vim.opt.shell = '/bin/zsh'
 vim.opt.shellcmdflag = '-ic'
 
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }
 
 vim.schedule(function()
