@@ -69,6 +69,16 @@ map('n', '<leader>sn', function()
 	}
 end, { desc = 'Search Neovim files' })
 
+map('n', '<leader>sc', function()
+  builtin.find_files {
+    cwd = vim.fn.expand('~/.config'),
+    prompt_title = 'Search Config Files',
+    follow = true,                             -- follow symlinks
+    hidden = true,                             -- show dotfiles
+    find_command = { 'fd', '--type', 'f', '--follow', '--hidden' },
+  }
+end, { desc = 'Search all config files' })
+
 --- <<< START find_files_with_path
 vim.keymap.set("n", "<leader>spf", function()
   local home = vim.fn.expand("~") -- resolves to $HOME
