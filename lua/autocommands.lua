@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		}
 	end,
 })
-vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#5b79ab', fg = 'NONE' })
+vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#8839ef', fg = 'NONE' })
 
 --  This function gets run when an LSP attaches to a particular buffer.
 vim.api.nvim_create_autocmd('LspAttach', {
