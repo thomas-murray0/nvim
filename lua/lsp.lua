@@ -49,6 +49,7 @@ local servers = {
 	zls = {
 		cmd = { vim.fn.expand('~/.zvm/master/zls') },
 		-- cmd = { vim.fn.expand('~/.zvm/0.15.2/zls') },
+		-- cmd = { vim.fn.expand('~/.zvm/0.15.1/zls') },
 		settings = { zls = {}, },
 	},
 }

@@ -54,4 +54,16 @@ return {
 	s('dprint', {
 		t 'std.debug.print("', i(1), t '", .{', i(2), t '});', i(0),
 	}),
+	s('dlog', {
+		t 'std.log.debug("', i(1), t '", .{', i(2), t '});', i(0),
+	}),
+	s('dinfo', {
+		t 'std.log.info("', i(1), t '", .{', i(2), t '});', i(0),
+	}),
+	s('dwarn', {
+		t 'std.log.warn("', i(1), t '", .{', i(2), t '});', i(0),
+	}),
+	s('derr', {
+		t 'std.log.err("', i(1), t '", .{', i(2), t '});', i(0),
+	}),
 }
