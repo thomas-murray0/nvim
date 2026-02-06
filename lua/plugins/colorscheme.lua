@@ -24,7 +24,7 @@ require("catppuccin").setup({
         transparent = false, -- enable transparent floating windows
         solid = false, -- use solid styling for floating windows, see |winborder|
     },
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
     term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
         enabled = false, -- dims the background color of inactive window
@@ -36,7 +36,7 @@ require("catppuccin").setup({
     no_underline = false, -- Force no underline
     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = {}, -- Change the style of comments
-        conditionals = { "italic" },
+        conditionals = {},
         loops = {},
         functions = {},
         keywords = {},
