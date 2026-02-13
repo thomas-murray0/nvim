@@ -31,7 +31,7 @@ require("catppuccin").setup({
 		shade = "dark",
 		percentage = 0.15,           -- percentage of the shade to apply to the inactive window
 	},
-	no_italic = false,             -- Force no italic
+	no_italic = true,             -- Force no italic
 	no_bold = false,               -- Force no bold
 	no_underline = false,          -- Force no underline
 	styles = {                     -- Handles the styles of general hi groups (see `:h highlight-args`):
@@ -71,45 +71,13 @@ require("catppuccin").setup({
 	color_overrides = {},               -- overrides for specific colors
 	custom_highlights = function(colors) -- overides for all lsp highlight groups
 		return {
-			-- 		-- Comment = { fg = colors.flamingo },
+			-- Comment = { fg = colors.flamingo },
 		}
 	end,
 	highlight_overrides = {
 		mocha = function(mocha)
 			return {
-				-- ["@class"] = { fg = "#000000" },
-				-- ["@comment"] = { fg = "#000000" },
-				-- ["@decorator"] = { fg = "#000000" },
-				-- ["@enum"] = { fg = "#000000" },
-				-- ["@enumMember"] = { fg = "#000000" },
-				-- ["@event"] = { fg = "#000000" },
-				-- ["@function"] = { fg = "#000000" },
-				-- ["@interface"] = { fg = "#000000" },
-				-- ["@keyword"] = { fg = "#000000" },
-				-- ["@macro"] = { fg = "#000000" },
-				-- ["@method"] = { fg = "#000000" },
-				-- ["@modifier"] = { fg = "#000000" },
-				-- ["@namespace"] = { fg = "#000000" },
-				-- ["@number"] = { fg = "#000000" },
-				-- ["@operator"] = { fg = "#000000" },
-				-- ["@parameter"] = { fg = "#000000" },
-				-- ["@property"] = { fg = "#000000" },
-				-- ["@regexp"] = { fg = "#000000" },
-				-- ["@string"] = { fg = "#000000" },
-				-- ["@struct"] = { fg = "#ff0000" },
-				-- ["@type"] = { fg = "#ff0000" },					-- all types in zig
-				-- ["@typeParameter"] = { fg = "#000000" },
-				-- ["@variable"] = { fg = "#000000" },
-				-- ["@abstract"] = { fg = "#000000" },
-				-- ["@async"] = { fg = "#000000" },
-				-- ["@declaration"] = { fg = "#000000" },
-				-- ["@defaultLibrary"] = { fg = "#000000" },
-				-- ["@definition"] = { fg = "#000000" },
-				-- ["@deprecated"] = { fg = "#000000" },
-				-- ["@documentation"] = { fg = "#000000" },
-				-- ["@modification"] = { fg = "#000000" },
-				-- ["@readonly"] = { fg = "#000000" },
-				-- ["@static"] = { fg = "#000000" }
+				-- do :h lsp-highlight
 			}
 		end,
 	},
@@ -130,3 +98,28 @@ require("catppuccin").setup({
 
 -- sets colorscheme
 vim.cmd('colorscheme catppuccin')
+
+-- Some colorscheme testing to decrease the latency of syntactic information flow from buffer to brain
+
+-- local function zig_semantic_overrides()
+	-- vim.api.nvim_set_hl(0, "@lsp.type.namespace", {
+	-- 	fg = "#ff04fa", -- change to what you want
+	-- })
+
+	-- vim.api.nvim_set_hl(0, "@lsp.type.struct", {
+	-- 	fg = "#f38ba8",
+	-- })
+
+	-- vim.api.nvim_set_hl(0, "@lsp.type.enum", {
+	-- 	fg = "#ff0000",
+	-- })
+
+	-- vim.api.nvim_set_hl(0, "@lsp.type.type", {
+	-- 	fg = "#008ba8",
+	-- })
+-- end
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "zig",
+-- 	callback = zig_semantic_overrides,
+-- })
