@@ -1,4 +1,4 @@
-Minimalist Neovim 0.12 Config
+*Minimalist Neovim 0.12 Config*
 
 Todo:
 

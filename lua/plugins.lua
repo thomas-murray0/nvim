@@ -6,6 +6,8 @@ require 'plugins/treesitter'
 
 require 'plugins/colorscheme'
 
+require 'plugins/markview' -- extra
+
 require 'plugins/lsp-config'
 
 require 'plugins/mason'
