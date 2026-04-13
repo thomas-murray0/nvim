@@ -1,36 +1,36 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "327fff9",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": ">=0.0.0"
     },
     "catppuccin": {
-      "rev": "af58927",
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
     "dracula": {
-      "rev": "041d923",
+      "rev": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee",
       "src": "https://github.com/Mofiqul/dracula.nvim"
     },
     "eldritch": {
-      "rev": "3bcdd32",
+      "rev": "0415fa72c348e814a7a6cc9405593a4f812fe12f",
       "src": "https://github.com/eldritch-theme/eldritch.nvim"
     },
     "friendly-snippets": {
-      "rev": "572f566",
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns": {
-      "rev": "1ee5c1f",
+      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox": {
-      "rev": "5e0a460",
+      "rev": "334d5fd49fc8033f26408425366c66c6390c57bb",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
     "harpoon": {
-      "rev": "ed1f853",
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
@@ -39,19 +39,19 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "lsp-config": {
-      "rev": "ac98db2",
+      "rev": "8a9378a822719346a0288fa004dab302ca3c0a8f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "luasnip": {
-      "rev": "21e9fec",
+      "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "markview": {
-      "rev": "9e852c299351fc2110e763edc7fc899358ee112e",
+      "rev": "1861f959599ae03cfd59f56222a542035b0cd947",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason": {
-      "rev": "ad7146a",
+      "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "miasma": {
@@ -59,7 +59,7 @@
       "src": "https://github.com/xero/miasma.nvim"
     },
     "mini": {
-      "rev": "89eecd8",
+      "rev": "c67822c53e8e282fe863343e88aa0a8ca3534059",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nord": {
@@ -67,32 +67,32 @@
       "src": "https://github.com/shaunsingh/nord.nvim"
     },
     "nvim-treesitter": {
-      "rev": "42fc28ba",
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "71385f1",
+      "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "oil": {
-      "rev": "7194872",
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "oldworld": {
-      "rev": "d0af80c",
+      "rev": "db072a0bd2c90035fc3a57a73014cb54d3902f1f",
       "src": "https://github.com/dgox16/oldworld.nvim"
     },
     "plenary": {
-      "rev": "b9fd522",
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rose-pine": {
-      "rev": "72a04c4",
+      "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
       "src": "https://github.com/rose-pine/neovim"
     },
     "telescope": {
-      "rev": "b4da76b",
+      "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
       "version": "'master'"
     },
@@ -101,7 +101,7 @@
       "src": "https://github.com/LinArcX/telescope-env.nvim"
     },
     "telescope-fzf": {
-      "rev": "1f08ed6",
+      "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
     },
     "telescope-ui": {
@@ -109,15 +109,15 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "test": {
-      "rev": "2c264d2",
+      "rev": "bdd3400bb9e64d541eadb9d22e38d17556d696dd",
       "src": "https://github.com/vim-test/vim-test"
     },
     "tmux-navigator": {
-      "rev": "c45243d",
+      "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
       "src": "https://github.com/christoomey/vim-tmux-navigator"
     },
     "tokyo-night": {
-      "rev": "8734a4e",
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "undo": {
@@ -125,15 +125,15 @@
       "src": "https://github.com/debugloop/telescope-undo.nvim"
     },
     "vscode": {
-      "rev": "cb9df08",
+      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
       "src": "https://github.com/Mofiqul/vscode.nvim"
     },
     "web-devicons": {
-      "rev": "b8221e4",
+      "rev": "c72328a5494b4502947a022fe69c0c47e53b6aa6",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "yoda": {
-      "rev": "7106287",
+      "rev": "266dd6e4f3ff500ebf6b58e7618b73ffde79f1c1",
       "src": "https://github.com/kuri-sun/yoda.nvim"
     }
   }
