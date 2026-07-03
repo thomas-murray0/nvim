@@ -133,8 +133,12 @@
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "yoda": {
-      "rev": "266dd6e4f3ff500ebf6b58e7618b73ffde79f1c1",
-      "src": "https://github.com/kuri-sun/yoda.nvim"
+      "rev": "710628761b28af75e1bd5f87a8330f0b787b803c",
+      "src": "git@github.com:kuri-sun/yoda.nvim"
+    },
+    "yoda.nvim": {
+      "rev": "710628761b28af75e1bd5f87a8330f0b787b803c",
+      "src": "git@github.com:kuri-sun/yoda.nvim"
     }
   }
 }

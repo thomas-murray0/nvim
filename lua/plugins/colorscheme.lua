@@ -1,6 +1,5 @@
 vim.pack.add({
 	{ src = 'https://github.com/catppuccin/nvim',              name = 'catppuccin' },
-	{ src = 'https://github.com/kuri-sun/yoda.nvim',           name = 'yoda' },
 	{ src = 'https://github.com/ellisonleao/gruvbox.nvim',     name = 'gruvbox' },
 	{ src = 'https://github.com/folke/tokyonight.nvim',        name = 'tokyo-night' },
 	{ src = 'https://github.com/dgox16/oldworld.nvim',         name = 'oldworld' },
