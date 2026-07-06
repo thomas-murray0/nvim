@@ -19,18 +19,26 @@ local servers = {
 	pyright = {},
 	ruff = {},
 	rust_analyzer = {
-		settings = {
-			['rust-analyzer'] = {
-				completion = {
-					callable = {
-						snippets = "add_parentheses"
-					},
-					snippets = {
-					},
-				},
-			}
-		},
-	},
+    settings = {
+      ['rust-analyzer'] = {
+        diagnostics = {
+          enable = false;
+        }
+      }
+    }
+  },
+	-- 	settings = {
+	-- 		['rust-analyzer'] = {
+	-- 			completion = {
+	-- 				callable = {
+	-- 					snippets = "add_parentheses"
+	-- 				},
+	-- 				snippets = {
+	-- 				},
+	-- 			},
+	-- 		}
+	-- 	},
+	-- },
 	ts_ls = {
 		cmd = { "typescript-language-server", "--stdio" },
 		filetypes = {
