@@ -99,10 +99,26 @@ vim.cmd('colorscheme catppuccin')
 
 -- Some colorscheme testing to decrease the latency of syntactic information flow from buffer to brain
 
--- local function zig_semantic_overrides()
+local function zig_semantic_overrides()
 	-- vim.api.nvim_set_hl(0, "@lsp.type.namespace", {
 	-- 	fg = "#ff04fa", -- change to what you want
 	-- })
+
+	vim.api.nvim_set_hl(0, "@lsp.type.builtin.zig", {
+		fg = "#fe640b", -- change to what you want
+	})
+
+	vim.api.nvim_set_hl(0, "@lsp.type.keywordLiteral.zig", {
+		fg = "#ea76cb", -- change to what you want
+	})
+
+	vim.api.nvim_set_hl(0, "@lsp.type.errorTag.zig", {
+		fg = "#d20f39", -- change to what you want
+	})
+
+	vim.api.nvim_set_hl(0, "@lsp.type.variable.zig", {
+		fg = "#f5e0dc", -- change to what you want
+	})
 
 	-- vim.api.nvim_set_hl(0, "@lsp.type.struct", {
 	-- 	fg = "#f38ba8",
@@ -115,9 +131,9 @@ vim.cmd('colorscheme catppuccin')
 	-- vim.api.nvim_set_hl(0, "@lsp.type.type", {
 	-- 	fg = "#008ba8",
 	-- })
--- end
+end
 
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "zig",
--- 	callback = zig_semantic_overrides,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "zig",
+	callback = zig_semantic_overrides,
+})
